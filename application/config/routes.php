@@ -51,8 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['credits'] = 'news';
 
-$route['settings/update'] = 'settings/index';
 $route['settings'] = 'settings';
+$route['settings/update'] = 'settings/index';
+$route['settings/login'] = 'settings/login';
+$route['settings/logout'] = 'settings/logout';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

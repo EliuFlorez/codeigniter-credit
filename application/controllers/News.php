@@ -8,6 +8,7 @@ class News extends CI_Controller {
 		$this->load->model('news_model');
 		$this->load->model('settings_model');
 		$this->load->helper('url_helper');
+		$this->load->library('session');
 		$this->load->library('form_validation'); 
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 	}
@@ -42,11 +43,26 @@ class News extends CI_Controller {
 
 		if (!empty($post)) 
 		{
-			$type   = $post['type'];
-			$plazo  = $post['plazo'];
-			$amort  = $post['amort'];
-			$value  = $post['value'];
-			$saldo  = $post['value'];
+			$type  = $post['type'];
+			$value = $post['value'];
+			if ($value <= 0) {
+				$this->session->set_flashdata('error', 'Monto en Cero');
+				redirect('/credits?error');
+			} else if ($value < $settings['credit_'.$type.'_mmin'] || $value > $settings['credit_'.$type.'_mmax']) {
+				$this->session->set_flashdata('error', 'Monto min y max no valido');
+				redirect('/credits?error');
+			}
+			echo $settings['credit_'.$type.'_pmin'];
+			$plazo = $post['plazo'];
+			if ($plazo <= 0) {
+				$this->session->set_flashdata('error', 'Plazo en Cero');
+				redirect('/credits?error');
+			} else if ($plazo < $settings['credit_'.$type.'_pmin'] || $plazo > $settings['credit_'.$type.'_pmax']) {
+				$this->session->set_flashdata('error', 'Plazo min y max no valido');
+				redirect('/credits?error');
+			}
+			$credit_seguro = $settings['credit_'.$type.'_seguro'];
+			$saldo = $post['value'];
 			
 			// Tasa Efectiva
 			if ($value < $settings['base_min']) {
@@ -69,7 +85,7 @@ class News extends CI_Controller {
 			$I2 = $I1 + 1;
 			$I2 = pow($I2, -$plazo);
 			$cuotas = round(($I1 * 2000) / (1 - $I2), 2);
-			$seguro = round((2.5 / 100) * $value / 12, 2);
+			$seguro = round(($credit_seguro / 100) * $value / 12, 2);
 			
 			for ($i = 1; $i <= $plazo; $i++) 
 			{
@@ -133,6 +149,7 @@ class News extends CI_Controller {
 		}
 		
 		$data['datas']        = $datas;
+		$data['credits']      = $settings;
 		$data['totalCapital'] = $totalCapital;
 		$data['totalIntere']  = $totalIntere;
 		$data['totalSeguro']  = $totalSeguro;

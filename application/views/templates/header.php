@@ -15,6 +15,7 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -40,6 +41,7 @@
 		.header {margin-bottom:30px;}
 		.jumbotron {border-bottom:0;}
 		}
+		.box {display:none;}
 	</style>
   </head>
 <body>

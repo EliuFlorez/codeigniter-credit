@@ -1,1 +1,1 @@
-<center><h3>Your form was successfully submitted!</h3></center>
+<center><h3>Registro actulizado!</h3></center>
