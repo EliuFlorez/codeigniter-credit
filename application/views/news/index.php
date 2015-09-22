@@ -1,7 +1,7 @@
 <div class="header clearfix"></div>
 <div class="row marketing">
 	<div class="col-lg-8">
-		<?php echo form_open('news', array('class' => 'form-horizontal')); ?>
+		<?php echo form_open('credits', array('class' => 'form-horizontal')); ?>
 			<p>Valores referenciales, las tasas, montos y plazos pueden variar sin previo aviso.</p>
 			
 			<div class="form-group">
