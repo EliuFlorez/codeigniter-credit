@@ -52,7 +52,7 @@ class News extends CI_Controller {
 				$this->session->set_flashdata('error', 'Monto min y max no valido');
 				redirect('/credits?error');
 			}
-			echo $settings['credit_'.$type.'_pmin'];
+			
 			$plazo = $post['plazo'];
 			if ($plazo <= 0) {
 				$this->session->set_flashdata('error', 'Plazo en Cero');
