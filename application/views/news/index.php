@@ -45,7 +45,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-md-4 control-label">Meses de Plazo:</label>
+				<label class="col-md-4 control-label">Plazo:</label>
 				<div class="col-md-6">
 					<?php echo form_input(array('name' => 'plazo', 'id' => 'plazo', 'placeholder' => '0', 'class' =>'form-control', 'value' => set_value('plazo'))); ?>
 					<?php echo form_error('plazo'); ?>
