@@ -12,7 +12,7 @@
 					<th class="text-center"><h4>MONTO MAXIMO</h4></th>
 					<th class="text-center"><h4>PLAZO MINIMO (MES)</h4></th>
 					<th class="text-center"><h4>PLAZO MAXIMO (MES)</h4></th>
-					<th class="text-center"><h4>SEGURO DESGRAVAMEN (MES)</h4></th>
+					<th class="text-center"><h4>SEGURO DESGRAVAMEN %(MES)</h4></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -168,8 +168,8 @@
 					<th class="text-center" style="background-color:blue"><h4 style="color:white">SUBCALIFICACION CONTABLE</h4></th>
 					<th class="text-center"><h4>MONTO MINIMO</h4></th>
 					<th class="text-center"><h4>MONTO MAXIMO</h4></th>
-					<th class="text-center"><h4>MONTO EFECTIVO</h4></th>
-					<th class="text-center"><h4>TASA NOMINA</h4></th>
+					<th class="text-center"><h4>MONTO EFECTIVO %</h4></th>
+					<th class="text-center"><h4>TASA NOMINA %</h4></th>
 				</tr>
 			</thead>
 			<tbody>
