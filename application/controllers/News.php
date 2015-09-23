@@ -130,6 +130,7 @@ class News extends CI_Controller {
 				
 				$cuota = abs($capital + $intere + $seguro);
 				
+				$array['days']    = abs($days_diff);
 				$array['fecha']   = $date_next;
 				$array['saldo']   = $saldo;
 				$array['capital'] = $capital;
