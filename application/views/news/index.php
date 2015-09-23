@@ -53,6 +53,14 @@
 			</div>
 			
 			<div class="form-group">
+				<label class="col-md-4 control-label">Dias de pago:</label>
+				<div class="col-md-6">
+					<?php echo form_input(array('name' => 'dia', 'id' => 'dia', 'placeholder' => '0', 'class' =>'form-control', 'value' => set_value('dia'))); ?>
+					<?php echo form_error('dia'); ?>
+				</div>
+			</div>
+			
+			<div class="form-group">
 				<label class="col-md-4 control-label">Tipo Tabla Amortización:</label>
 				<div class="col-md-6">
 					<select class="form-control" name="amort">
@@ -67,7 +75,7 @@
 				<label class="col-md-4 control-label">Periodo de Pago:</label>
 				<div class="col-md-6">
 					<select class="form-control" name="periodo">
-						<option value="52">Semanal</option>
+						<option value="52" <?php echo set_select('periodo', '52'); ?>>Semanal</option>
 						<option value="24" <?php echo set_select('periodo', '24'); ?>>Quincenal</option>
 						<option value="12" <?php echo set_select('periodo', '12'); ?>>Mensual</option>
 						<option value="6" <?php echo set_select('periodo', '6'); ?>>Bimestral</option>

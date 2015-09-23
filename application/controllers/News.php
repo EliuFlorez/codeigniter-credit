@@ -22,13 +22,10 @@ class News extends CI_Controller {
 		$value = '';
 		$amort = 1;
 		$type  = 1;
-		$days  = date('d');
 		$month = date('m');
 		$year  = date('Y');
-		$date  = date('Y-m-d');
 		$datex = '';
 		$datas = array();
-		$dayin = date('t', mktime(0, 0, 0, $month, 1, $year)) - $days;
 
 		$totalCapital = 0;
 		$totalIntere  = 0;
@@ -45,6 +42,19 @@ class News extends CI_Controller {
 		{
 			$type  = $post['type'];
 			$value = $post['value'];
+			$dia   = $post['dia'];
+			$periodo = $post['periodo'];
+			
+			if (!empty($dia)) {
+				$days = $dia;
+				$date = date('Y-m').'-'.$dia;
+			} else {
+				$days = date('d');
+				$date = date('Y-m-d');
+			}
+			
+			$dayin = date('t', mktime(0, 0, 0, $month, 1, $year)) - $days;
+			
 			if ($value <= 0) {
 				$this->session->set_flashdata('error', 'Monto en Cero');
 				redirect('/credits?error');
@@ -61,6 +71,7 @@ class News extends CI_Controller {
 				$this->session->set_flashdata('error', 'Plazo min y max no valido');
 				redirect('/credits?error');
 			}
+			
 			$credit_seguro = $settings['credit_'.$type.'_seguro'];
 			$saldo = $post['value'];
 			
@@ -84,14 +95,39 @@ class News extends CI_Controller {
 			$I1 = $tasa / 12 / 100;
 			$I2 = $I1 + 1;
 			$I2 = pow($I2, -$plazo);
-			$cuotas = round(($I1 * 2000) / (1 - $I2), 2);
+			$cuotas = round(($I1 * $value) / (1 - $I2), 2);
 			$seguro = round(($credit_seguro / 100) * $value / 12, 2);
 			
+			$m = 0;
 			for ($i = 1; $i <= $plazo; $i++) 
 			{
 				$array = array();
 				
-				$date_next = strtotime('+'.$i.' month', strtotime($date));
+				if ($periodo == 52) {
+					$m += 7;
+				} else if ($periodo == 24) {
+					$m += 15;
+				} else if ($periodo == 12) {
+					$m += 1;
+				} else if ($periodo == 6) {
+					$m += 2;
+				} else if ($periodo == 4) {
+					$m += 3;
+				} else if ($periodo == 3) {
+					$m += 4;
+				} else if ($periodo == 2) {
+					$m += 6;
+				} else if ($periodo == 1) {
+					$m += 12;
+				}
+				
+				if ($periodo <= 12) {
+					$suma = 'month';
+				} else {
+					$suma = 'day';
+				}
+				
+				$date_next = strtotime('+'.$m.' '.$suma, strtotime($date));
 				$date_next = date('Y-m-d', $date_next);
 				$date_day  = strtolower(date('l', strtotime($date_next))); // Saturday, Sunday
 
@@ -146,6 +182,7 @@ class News extends CI_Controller {
 				// Add Array
 				$datas[] = $array;
 			}
+			
 			$value = '';
 		}
 		
