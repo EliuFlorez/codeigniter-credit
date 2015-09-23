@@ -11,7 +11,6 @@
 		}).change();
 	});
 </script>
-<?php $amort = set_value('amort'); ?>
 <div class="row marketing">
 	<div class="col-lg-8">
 		<?php echo form_open('credits', array('class' => 'form-horizontal')); ?>
@@ -124,7 +123,7 @@
 		</div>
 	</div>
 
-	<div class="col-lg-<?php echo ($amort == 1) ? '8' : '12'; ?>">
+	<div class="col-lg-8">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -164,25 +163,23 @@
 			</tfoot>
 		</table>
 	</div>
-	<?php if ($amort == 1) { ?>
-		<div class="col-lg-4">
-			<table class="table table-bordered">
-				<thead>
+	<div class="col-lg-4">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th><h4>Dias Transcurridos</h4></th>
+					<th><h4>Fecha sin adjuste</h4></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($datas as $data) { ?>
 					<tr>
-						<th><h4>Dias Transcurridos</h4></th>
-						<th><h4>Fecha sin adjuste</h4></th>
+						<td class="text-right"><?php echo $data['days']; ?></td>
+						<td class="text-right"><?php echo $data['fecha']; ?></td>
 					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($datas as $data) { ?>
-						<tr>
-							<td class="text-right"><?php echo $data['days']; ?></td>
-							<td class="text-right"><?php echo $data['fecha']; ?></td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div>
-	<?php } ?>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
 </div>
 <div class="header clearfix"></div>
