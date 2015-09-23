@@ -76,7 +76,7 @@ class News extends CI_Controller {
 			$saldo = $post['value'];
 			
 			// Tasa Efectiva
-			if ($value < $settings['base_min']) {
+			if ($value <= $settings['base_max']) {
 				$efect = $settings['base_efectiva'];
 			} else if ($value >= $settings['simple_min'] && $value <= $settings['simple_max']) {
 				$efect = $settings['simple_efectiva'];
