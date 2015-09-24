@@ -43,6 +43,7 @@ class News extends CI_Controller {
 			$type  = $post['type'];
 			$value = $post['value'];
 			$dia   = $post['dia'];
+			$amort = $post['amort'];
 			$periodo = $post['periodo'];
 			
 			if (!empty($dia)) {
