@@ -18,15 +18,18 @@ class News extends CI_Controller {
         $data = array();
         $data['title'] = 'News archive';
 
+		$monto = '';
 		$plazo = '';
 		$value = '';
 		$amort = 1;
 		$type  = 1;
+		$seguro = '';
+		$cuotas = '';
 		$month = date('m');
 		$year  = date('Y');
 		$datex = '';
 		$datas = array();
-
+		$date  = '';
 		$totalCapital = 0;
 		$totalIntere  = 0;
 		$totalSeguro  = 0;
@@ -41,7 +44,10 @@ class News extends CI_Controller {
 		if (!empty($post)) 
 		{
 			$type  = $post['type'];
+			
 			$value = $post['value'];
+			$monto = $value;
+			
 			$dia   = $post['dia'];
 			$amort = $post['amort'];
 			$periodo = $post['periodo'];
@@ -91,7 +97,7 @@ class News extends CI_Controller {
 			$p3 = (360/30)*100;
 			$pow = pow($p1, $p2) - 1;
 			$tasa = round($pow * $p3, 2);
-
+			
 			// Cuota
 			$I1 = $tasa / 12 / 100;
 			$I2 = $I1 + 1;
@@ -193,6 +199,14 @@ class News extends CI_Controller {
 		$data['totalIntere']  = $totalIntere;
 		$data['totalSeguro']  = $totalSeguro;
 		$data['totalCuota']   = $totalCuota;
+		
+		$data['date']         = $date;
+		$data['monto']        = $monto;
+		$data['plazo']        = $plazo;
+		$data['type']         = $type;
+		$data['amort']        = $amort;
+		$data['seguro']       = $seguro;
+		$data['cuotas']       = $cuotas;
 		
         $this->load->view('templates/header', $data);
         $this->load->view('news/index', $data);

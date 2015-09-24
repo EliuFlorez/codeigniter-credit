@@ -45,7 +45,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-md-4 control-label">Plazo:</label>
+				<label class="col-md-4 control-label">Meses de Plazo:</label>
 				<div class="col-md-6">
 					<?php echo form_input(array('name' => 'plazo', 'id' => 'plazo', 'placeholder' => '0', 'class' =>'form-control', 'value' => set_value('plazo'))); ?>
 					<?php echo form_error('plazo'); ?>
@@ -130,64 +130,116 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="col-lg-8">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th><h4>Cuota</h4></th>
-					<th><h4>Fecha de Pago</h4></th>
-					<th><h4>Saldo Capital</h4></th>
-					<th><h4>Capital</h4></th>
-					<th><h4>Interes</h4></th>
-					<th><h4>Seguro Desgravamen</h4></th>
-					<th><h4>Cuota</h4></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php $i = 1; ?>
-				<?php foreach ($datas as $data) { ?>
+	<?php if (count($datas) > 0) { ?>
+		<div class="col-lg-12">
+			<h4 style="color:red">DETALLE DE LA OPERACIÓN</h4>
+			<table class="table borderless">
+				<tbody>
 					<tr>
-						<td><?php echo $i++; ?></td>
-						<td class="text-right"><?php echo $data['fecha']; ?></td>
-						<td class="text-right">$ <?php echo $data['saldo']; ?></td>
-						<td class="text-right">$ <?php echo $data['capital']; ?></td>
-						<td class="text-right">$ <?php echo $data['intere']; ?></td>
-						<td class="text-right">$ <?php echo $data['seguro']; ?></td>
-						<td class="text-right">$ <?php echo $data['cuota']; ?></td>
+						<td>Fecha de Simulación:</td>
+						<td><strong><?php echo $date; ?></strong></td>
+						<td></td>
+						<td>Fecha del sistema con la cual se procesó ésta simulación.</td>
 					</tr>
-				<?php } ?>
-			</tbody>
-			<tfoot>
-				<tr>
-					<th style="border:0"></th>
-					<td></td>
-					<td class="text-right"><strong>Total</strong></td>
-					<td class="text-right"><strong>$ <?php echo $totalCapital; ?></strong></td>
-					<td class="text-right"><strong>$ <?php echo $totalIntere; ?></strong></td>
-					<td class="text-right"><strong>$ <?php echo $totalSeguro; ?></strong></td>
-					<td class="text-right"><strong>$ <?php echo $totalCuota; ?></strong></td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
-	<div class="col-lg-4">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th><h4>Dias Transcurridos</h4></th>
-					<th><h4>Fecha sin adjuste</h4></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($datas as $data) { ?>
 					<tr>
-						<td class="text-right"><?php echo $data['days']; ?></td>
-						<td class="text-right"><?php echo $data['fecha']; ?></td>
+						<td>Monto Financiado:</td>
+						<td><strong><?php echo $monto; ?></strong></td>
+						<td>USD</td>
+						<td>Monto del Crédito Aprobado.</td>
 					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-	</div>
+					<tr>
+						<td>Plazo:</td>
+						<td><?php echo $plazo; ?></td>
+						<td>Meses / Dias</td>
+						<td>Tiempo acordado para el pago del Crédito.</td>
+					</tr>
+					<tr>
+						<td>Seguro de Desgravamen:</td>
+						<td><?php echo $seguro; ?></td>
+						<td>USD</td>
+						<td>Costo que el socio paga por la cobertura de un seguro de vida asociado al Crédito.</td>
+					</tr>
+					<tr>
+						<td>Valor Total a Pagar:</td>
+						<td><?php echo $totalCuota; ?></td>
+						<td>USD</td>
+						<td>Suma de las cuotas que el socio debera cancelar en el periodo convenido.</td>
+					</tr>
+					<tr>
+						<td>Cuota Aproximada:</td>
+						<td><strong><?php echo $cuotas; ?></strong></td>
+						<td>USD</td>
+						<td>Valor Aproximado a pagar durante el Plazo Aprobado.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-12">
+			<h4 style="color:red">DETALLE TASAS DE INTERÉS</h4>
+			<table class="table borderless">
+				<tbody>
+					<tr>
+						<td>Tasa de Interes:</td>
+						<td>0</td>
+						<td>%</td>
+						<td>Tasa de Interés Anual.</td>
+					</tr>
+					<tr>
+						<td>Tasa Efectiva Anual:</td>
+						<td>0</td>
+						<td>%</td>
+						<td>Tasa de interés que incluye todos los costos asociados al Crédito.</td>
+					</tr>
+					<tr>
+						<td>TEA Referencial:</td>
+						<td>0</td>
+						<td>%</td>
+						<td>Tasa de interés definida por el Banco Central del Ecuador para cada segmento de Crédito.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-12">
+			<h4 style="color:red">TABLA DE AMORTIZACIÓN TIPO <?php echo ($amort == 1) ?  'FRANCESA' : 'ALEMANA'; ?></h4>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th><h4>Cuota</h4></th>
+						<th><h4>Fecha de Pago</h4></th>
+						<th><h4>Saldo Capital</h4></th>
+						<th><h4>Capital</h4></th>
+						<th><h4>Interes</h4></th>
+						<th><h4>Seguro Desgravamen</h4></th>
+						<th><h4>Cuota</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $i = 1; ?>
+					<?php foreach ($datas as $data) { ?>
+						<tr>
+							<td><?php echo $i++; ?></td>
+							<td class="text-right"><?php echo $data['fecha']; ?></td>
+							<td class="text-right">$ <?php echo $data['saldo']; ?></td>
+							<td class="text-right">$ <?php echo $data['capital']; ?></td>
+							<td class="text-right">$ <?php echo $data['intere']; ?></td>
+							<td class="text-right">$ <?php echo $data['seguro']; ?></td>
+							<td class="text-right">$ <?php echo $data['cuota']; ?></td>
+						</tr>
+					<?php } ?>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th style="border:0"></th>
+						<td></td>
+						<td class="text-right"><strong>Total</strong></td>
+						<td class="text-right"><strong>$ <?php echo $totalCapital; ?></strong></td>
+						<td class="text-right"><strong>$ <?php echo $totalIntere; ?></strong></td>
+						<td class="text-right"><strong>$ <?php echo $totalSeguro; ?></strong></td>
+						<td class="text-right"><strong>$ <?php echo $totalCuota; ?></strong></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	<?php } ?>
 </div>
 <div class="header clearfix"></div>

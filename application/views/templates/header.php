@@ -42,6 +42,7 @@
 		.jumbotron {border-bottom:0;}
 		}
 		.box {display:none;}
+		.borderless td, .borderless th {border:none;}
 	</style>
   </head>
 <body>
