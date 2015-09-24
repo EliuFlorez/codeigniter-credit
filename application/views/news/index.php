@@ -90,6 +90,7 @@
 			<div class="form-group">
 				<div class="col-md-6 col-md-offset-4">
 					<button type="submit" id="Save" class="btn btn-primary">Calcular</button>
+					<a href="<?php echo site_url('/credits'); ?>" class="btn btn-default">Limpiar</a>
 				</div>
 			</div>
 		<?php echo form_close(); ?>
