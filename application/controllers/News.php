@@ -25,6 +25,8 @@ class News extends CI_Controller {
 		$type  = 1;
 		$seguro = '';
 		$cuotas = '';
+		$efect  = '';
+		$tasa   = '';
 		$month = date('m');
 		$year  = date('Y');
 		$datex = '';
@@ -207,6 +209,8 @@ class News extends CI_Controller {
 		$data['amort']        = $amort;
 		$data['seguro']       = $seguro;
 		$data['cuotas']       = $cuotas;
+		$data['efect']        = $efect;
+		$data['tasa']         = $tasa;
 		
         $this->load->view('templates/header', $data);
         $this->load->view('news/index', $data);

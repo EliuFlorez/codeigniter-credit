@@ -180,13 +180,13 @@
 				<tbody>
 					<tr>
 						<td>Tasa de Interes:</td>
-						<td>0</td>
+						<td><?php echo $tasa; ?></td>
 						<td>%</td>
 						<td>Tasa de Interés Anual.</td>
 					</tr>
 					<tr>
 						<td>Tasa Efectiva Anual:</td>
-						<td>0</td>
+						<td><?php echo $efect; ?></td>
 						<td>%</td>
 						<td>Tasa de interés que incluye todos los costos asociados al Crédito.</td>
 					</tr>
