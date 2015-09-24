@@ -53,7 +53,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-md-4 control-label">Dias de pago:</label>
+				<label class="col-md-4 control-label">Días de pago:</label>
 				<div class="col-md-6">
 					<?php echo form_input(array('name' => 'dia', 'id' => 'dia', 'placeholder' => '0', 'class' =>'form-control', 'value' => set_value('dia'))); ?>
 					<?php echo form_error('dia'); ?>
@@ -97,7 +97,7 @@
 	
 	<div class="col-lg-4">
 		<div class="panel panel-default">
-			<div class="panel-heading">El Monto Minimno y Maximo</div>
+			<div class="panel-heading">El Monto Mínimo y Máximo</div>
 			<div class="panel-body box" id="credit-1">
 				<h4>El monto está en el rango:</h4>
 				<h4>de $ <?php echo $credits['credit_1_mmin']; ?>,00 a $ <?php echo $credits['credit_1_mmax']; ?>,00</h4>
@@ -150,7 +150,7 @@
 					<tr>
 						<td>Plazo:</td>
 						<td><?php echo $plazo; ?></td>
-						<td>Meses / Dias</td>
+						<td>Meses / Días</td>
 						<td>Tiempo acordado para el pago del Crédito.</td>
 					</tr>
 					<tr>
@@ -179,7 +179,7 @@
 			<table class="table borderless">
 				<tbody>
 					<tr>
-						<td>Tasa de Interes:</td>
+						<td>Tasa de Interés:</td>
 						<td><?php echo $tasa; ?></td>
 						<td>%</td>
 						<td>Tasa de Interés Anual.</td>
@@ -208,7 +208,7 @@
 						<th><h4>Fecha de Pago</h4></th>
 						<th><h4>Saldo Capital</h4></th>
 						<th><h4>Capital</h4></th>
-						<th><h4>Interes</h4></th>
+						<th><h4>Interés</h4></th>
 						<th><h4>Seguro Desgravamen</h4></th>
 						<th><h4>Cuota</h4></th>
 					</tr>
